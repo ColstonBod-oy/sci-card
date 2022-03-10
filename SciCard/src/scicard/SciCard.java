@@ -35,7 +35,8 @@ public class SciCard {
     public static void main(String[] args) throws FontFormatException, IOException {
         int correct = 0;
         String[][] choices = {
-            {"opt1", "opt2", "opt3", "opt4"}
+            {"opt1", "opt2", "opt3", "opt4"},
+            {"opt5", "opt6", "opt7", "opt8"}
         };
         
         Font font = Font.createFont(Font.TRUETYPE_FONT, SciCard.class.getResourceAsStream("/scicard/assets/cyberspace.ttf")).deriveFont(10f);
@@ -53,7 +54,8 @@ public class SciCard {
         JPanel cardPanel = new JPanel();
         cardPanel.setOpaque(false);
         cardPanel.setLayout(new CardLayout());
-        cardPanel.add(new SciRadioPanel("test question", font, choices[0], nextButton, 1, correct));
+        //cardPanel.add(new SciRadioPanel("test question", font, choices[0], nextButton, 1, correct));
+        cardPanel.add(new SciCheckPanel("test question", font, choices[1], nextButton, new int[]{0, 1, -1, -1}, correct));
         
         JPanel mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(480, 480));
@@ -68,10 +70,10 @@ public class SciCard {
         
         JFrame mainFrame = new JFrame("Sci-Card");
         mainFrame.setResizable(false);
-        mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.add(mainPanel);
         mainFrame.pack();
+        mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
     }
     
