@@ -57,6 +57,7 @@ public class SciRadioPanel extends JPanel implements ActionListener {
         this.question.setOpaque(false);
         this.choices = new SciRadioButton[choices.length];
         this.nextButton = nextButton;
+        this.nextButton.addActionListener(this);
         this.answer = answer;
         this.correct = correct;
         ButtonGroup buttonGroup = new ButtonGroup();
@@ -75,17 +76,17 @@ public class SciRadioPanel extends JPanel implements ActionListener {
         
         for (int i = 0; i < choices.length; i++) {
             this.choices[i] = new SciRadioButton(choices[i]);
+            this.choices[i].addActionListener(this);
+            buttonGroup.add(this.choices[i]);
             
             if (i % 2 == 0) {
                 leftPanelY.add(Box.createVerticalStrut(10));
                 leftPanelY.add(this.choices[i]);
-                buttonGroup.add(this.choices[i]);
             }
             
             else {
                 rightPanelY.add(Box.createVerticalStrut(10));
                 rightPanelY.add(this.choices[i]);
-                buttonGroup.add(this.choices[i]);
             }
         }
         
@@ -108,8 +109,6 @@ public class SciRadioPanel extends JPanel implements ActionListener {
             if (selected == answer) {
                 correct++;
             }
-            
-            System.out.println(correct);
         }
     }
     
