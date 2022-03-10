@@ -15,33 +15,51 @@ import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 
 /**
  *
  * @author User
  */
-public class SciRadioPanel extends JPanel {
+public class SciRadioPanel extends JPanel implements ActionListener {
     
-    private JLabel question;
+    private JTextPane question;
     private Font font;
     private SciRadioButton[] choices;
+    private SciButton nextButton;
     private int answer;
-    private JFrame card;
+    private int correct;
+    private int selected;
     
-    public SciRadioPanel(String question, Font font, String[] choices, int answer, JFrame card) {
+    public SciRadioPanel(String question, Font font, String[] choices, SciButton nextButton, int answer, int correct) {
         this.font = font;
-        this.question = new JLabel(question);
-        this.question.setFont(font.deriveFont(14f));
-        this.question.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        this.question = new JTextPane();
+        SimpleAttributeSet attr = new SimpleAttributeSet();
+        StyleConstants.setAlignment(attr, StyleConstants.ALIGN_CENTER);
+        StyleConstants.setFontFamily(attr, "cyberspace");
+        StyleConstants.setFontSize(attr, 17);
+        StyleConstants.setForeground(attr, Color.decode("#01012b"));
+        this.question.setParagraphAttributes(attr, true);
+        this.question.setText(question);
+        this.question.setEditable(false);
+        this.question.setOpaque(false);
         this.choices = new SciRadioButton[choices.length];
+        this.nextButton = nextButton;
         this.answer = answer;
-        this.card = card;
+        this.correct = correct;
+        ButtonGroup buttonGroup = new ButtonGroup();
         JPanel leftPanelY = new JPanel();
         leftPanelY.setOpaque(false);
         leftPanelY.setLayout(new BoxLayout(leftPanelY, BoxLayout.Y_AXIS));
@@ -52,29 +70,47 @@ public class SciRadioPanel extends JPanel {
         containerPanel.setOpaque(false);
         containerPanel.setLayout(new FlowLayout());
         containerPanel.add(leftPanelY);
+        containerPanel.add(Box.createHorizontalStrut(55));
         containerPanel.add(rightPanelY);
-        
-        int y1 = 0;
-        int y2 = 0;
         
         for (int i = 0; i < choices.length; i++) {
             this.choices[i] = new SciRadioButton(choices[i]);
             
             if (i % 2 == 0) {
-                y1 += 50;
+                leftPanelY.add(Box.createVerticalStrut(10));
                 leftPanelY.add(this.choices[i]);
+                buttonGroup.add(this.choices[i]);
             }
             
             else {
-                y2 += 50;
+                rightPanelY.add(Box.createVerticalStrut(10));
                 rightPanelY.add(this.choices[i]);
+                buttonGroup.add(this.choices[i]);
             }
         }
         
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(this.question);
+        add(Box.createVerticalStrut(15));
         add(containerPanel);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        for (int i = 0; i < choices.length; i++) {
+            if (e.getSource() == choices[i]) {
+                selected = i;
+            }
+        }
+        
+        if (e.getSource().equals(nextButton)) {
+            if (selected == answer) {
+                correct++;
+            }
+            
+            System.out.println(correct);
+        }
     }
     
     class SciRadioButton extends JRadioButton {

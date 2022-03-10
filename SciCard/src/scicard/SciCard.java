@@ -6,6 +6,7 @@ package scicard;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
@@ -19,6 +20,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 /**
@@ -31,6 +33,11 @@ public class SciCard {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FontFormatException, IOException {
+        int correct = 0;
+        String[][] choices = {
+            {"opt1", "opt2", "opt3", "opt4"}
+        };
+        
         Font font = Font.createFont(Font.TRUETYPE_FONT, SciCard.class.getResourceAsStream("/scicard/assets/cyberspace.ttf")).deriveFont(10f);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
@@ -41,19 +48,31 @@ public class SciCard {
         ImageIcon ico = new ImageIcon(dimg);
         emblem.setIcon(ico);
         
-        JFrame frame = new JFrame("Sci-Card");
-        frame.setSize(480, 480);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setBackground(Color.decode("#d1f7ff"));
-        frame.setLayout(new GridBagLayout());
-        frame.add(emblem, new GridBagConstraints(0, 0, 3, 1, 0, 0, GridBagConstraints.CENTER, 
-                GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 100));
-        frame.add(new SciRadioPanel("test question", font, new String[]{"opt1111111111", "opt2", "opt3", 
-                "opt4"}, 1, frame), new GridBagConstraints(0, 1, 3, 1, 0, 0, GridBagConstraints.CENTER, 
-                GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 100));
-        frame.setVisible(true);
+        SciButton nextButton = new SciButton(font);
+        
+        JPanel cardPanel = new JPanel();
+        cardPanel.setOpaque(false);
+        cardPanel.setLayout(new CardLayout());
+        cardPanel.add(new SciRadioPanel("test question", font, choices[0], nextButton, 1, correct));
+        
+        JPanel mainPanel = new JPanel();
+        mainPanel.setPreferredSize(new Dimension(480, 480));
+        mainPanel.setBackground(Color.decode("#d1f7ff"));
+        mainPanel.setLayout(new GridBagLayout());
+        mainPanel.add(emblem, new GridBagConstraints(0, 0, 3, 1, 0, 0, GridBagConstraints.CENTER, 
+                GridBagConstraints.NONE, new Insets(0, 0, 28, 0), 0, 0));
+        mainPanel.add(cardPanel, new GridBagConstraints(0, 1, 3, 1, 0, 0, GridBagConstraints.CENTER, 
+                GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+        mainPanel.add(nextButton, new GridBagConstraints(0, 2, 3, 1, 0, 0, GridBagConstraints.CENTER,
+                GridBagConstraints.NONE, new Insets(28, 0, 0, 0), 0, 0));
+        
+        JFrame mainFrame = new JFrame("Sci-Card");
+        mainFrame.setResizable(false);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.add(mainPanel);
+        mainFrame.pack();
+        mainFrame.setVisible(true);
     }
     
 }
