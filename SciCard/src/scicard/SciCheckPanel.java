@@ -39,13 +39,12 @@ public class SciCheckPanel extends JPanel implements ActionListener {
     private JPanel cardPanel;
     private CardLayout cardLayout;
     private int[] answers;
-    private int correct;
+    private int[] score;
     private int[] selected;
     private SciButton nextButton;
     private boolean isAnswered;
     
-    public SciCheckPanel(String question, Font font, String[] choices, JPanel cardPanel, CardLayout cardLayout, int[] answers, int correct) {
-        this.font = font;
+    public SciCheckPanel(String question, Font font, String[] choices, JPanel cardPanel, CardLayout cardLayout, int[] answers, int[] score) {
         this.question = new JTextPane();
         SimpleAttributeSet attr = new SimpleAttributeSet();
         StyleConstants.setAlignment(attr, StyleConstants.ALIGN_CENTER);
@@ -56,11 +55,12 @@ public class SciCheckPanel extends JPanel implements ActionListener {
         this.question.setText(question);
         this.question.setEditable(false);
         this.question.setOpaque(false);
+        this.font = font;
         this.choices = new SciCheckBox[choices.length];
         this.cardPanel = cardPanel;
         this.cardLayout = cardLayout;
         this.answers = answers;
-        this.correct = correct;
+        this.score = score;
         this.selected = new int[choices.length];
         nextButton = new SciButton(font);
         nextButton.setAlignmentX(SciButton.CENTER_ALIGNMENT);
@@ -123,7 +123,7 @@ public class SciCheckPanel extends JPanel implements ActionListener {
             }
             
             if (Arrays.equals(selected, answers) && isAnswered) {
-                correct++;
+                score[0]++;
                 cardLayout.next(cardPanel);
             }
             

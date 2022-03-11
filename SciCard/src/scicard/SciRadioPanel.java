@@ -43,13 +43,12 @@ public class SciRadioPanel extends JPanel implements ActionListener {
     private JPanel cardPanel;
     private CardLayout cardLayout;
     private int answer;
-    private int correct;
+    private int[] score;
     private SciButton nextButton;
     private ButtonGroup buttonGroup;
     private int selected;
     
-    public SciRadioPanel(String question, Font font, String[] choices, JPanel cardPanel, CardLayout cardLayout, int answer, int correct) {
-        this.font = font;
+    public SciRadioPanel(String question, Font font, String[] choices, JPanel cardPanel, CardLayout cardLayout, int answer, int[] score) {
         this.question = new JTextPane();
         SimpleAttributeSet attr = new SimpleAttributeSet();
         StyleConstants.setAlignment(attr, StyleConstants.ALIGN_CENTER);
@@ -60,11 +59,12 @@ public class SciRadioPanel extends JPanel implements ActionListener {
         this.question.setText(question);
         this.question.setEditable(false);
         this.question.setOpaque(false);
+        this.font = font;
         this.choices = new SciRadioButton[choices.length];
         this.cardPanel = cardPanel;
         this.cardLayout = cardLayout;
         this.answer = answer;
-        this.correct = correct;
+        this.score = score;
         nextButton = new SciButton(font);
         nextButton.setAlignmentX(SciButton.CENTER_ALIGNMENT);
         nextButton.addActionListener(this);
@@ -117,7 +117,7 @@ public class SciRadioPanel extends JPanel implements ActionListener {
         
         if (e.getSource().equals(nextButton)) {
             if (selected == answer) {
-                correct++;
+                score[0]++;
                 cardLayout.next(cardPanel);
             }
             

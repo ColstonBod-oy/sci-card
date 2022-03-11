@@ -33,7 +33,7 @@ public class SciCard {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FontFormatException, IOException {
-        int correct = 0;
+        int[] score = {0};
         String[][] choices = {
             {"opt1", "opt2", "opt3", "opt4"},
             {"opt5", "opt6", "opt7", "opt8"}
@@ -53,8 +53,9 @@ public class SciCard {
         JPanel cardPanel = new JPanel();
         cardPanel.setOpaque(false);
         cardPanel.setLayout(cardLayout);
-        cardPanel.add(new SciRadioPanel("test question", font, choices[0], cardPanel, cardLayout, 1, correct));
-        cardPanel.add(new SciCheckPanel("test question2", font, choices[1], cardPanel, cardLayout, new int[]{0, 1, -1, -1}, correct));
+        cardPanel.add(new SciRadioPanel("test question", font, choices[0], cardPanel, cardLayout, 1, score));
+        cardPanel.add(new SciCheckPanel("test question2", font, choices[1], cardPanel, cardLayout, new int[]{0, 1, -1, -1}, score));
+        cardPanel.add(new SciTextPanel("test question3", font, "f____", cardPanel, cardLayout, "fuck", score));
         
         JPanel mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(480, 480));
