@@ -4,6 +4,7 @@
  */
 package scicard;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -35,13 +36,15 @@ public class SciCheckPanel extends JPanel implements ActionListener {
     private JTextPane question;
     private Font font;
     private SciCheckBox[] choices;
-    private SciButton nextButton;
+    private JPanel cardPanel;
+    private CardLayout cardLayout;
     private int[] answers;
     private int correct;
     private int[] selected;
+    private SciButton nextButton;
     private boolean isAnswered;
     
-    public SciCheckPanel(String question, Font font, String[] choices, SciButton nextButton, int[] answers, int correct) {
+    public SciCheckPanel(String question, Font font, String[] choices, JPanel cardPanel, CardLayout cardLayout, int[] answers, int correct) {
         this.font = font;
         this.question = new JTextPane();
         SimpleAttributeSet attr = new SimpleAttributeSet();
@@ -54,11 +57,14 @@ public class SciCheckPanel extends JPanel implements ActionListener {
         this.question.setEditable(false);
         this.question.setOpaque(false);
         this.choices = new SciCheckBox[choices.length];
-        this.nextButton = nextButton;
-        this.nextButton.addActionListener(this);
+        this.cardPanel = cardPanel;
+        this.cardLayout = cardLayout;
         this.answers = answers;
         this.correct = correct;
         this.selected = new int[choices.length];
+        nextButton = new SciButton(font);
+        nextButton.setAlignmentX(SciButton.CENTER_ALIGNMENT);
+        nextButton.addActionListener(this);
         isAnswered = false;
         JPanel leftPanelY = new JPanel();
         leftPanelY.setOpaque(false);
@@ -93,6 +99,8 @@ public class SciCheckPanel extends JPanel implements ActionListener {
         add(this.question);
         add(Box.createVerticalStrut(15));
         add(containerPanel);
+        add(Box.createVerticalStrut(28));
+        add(nextButton);
     }
 
     @Override
@@ -116,10 +124,15 @@ public class SciCheckPanel extends JPanel implements ActionListener {
             
             if (Arrays.equals(selected, answers) && isAnswered) {
                 correct++;
+                cardLayout.next(cardPanel);
+            }
+            
+            else if (!isAnswered) {
+                JOptionPane.showMessageDialog(question, "Item unanswered!", "Error", JOptionPane.ERROR_MESSAGE);
             }
             
             else {
-                JOptionPane.showMessageDialog(question, "This item must be answered!", "Error", JOptionPane.ERROR_MESSAGE);
+                cardLayout.next(cardPanel);
             }
         }
     }

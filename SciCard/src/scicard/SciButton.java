@@ -29,7 +29,7 @@ public class SciButton extends JButton {
     public SciButton(Font font) {
         setText("next");
         setFont(font.deriveFont(14f));
-        setPreferredSize(new Dimension(190, 50));
+        setMaximumSize(new Dimension(155, 50));
         setBackground(Color.decode("#08deea"));
         setForeground(Color.decode("#01012b"));
         setBorder(BorderFactory.createCompoundBorder(new SciButton.TriangularBorder(), new EmptyBorder(new Insets(15, 25, 15, 25))));

@@ -4,6 +4,7 @@
  */
 package scicard;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.FlowLayout;
@@ -21,6 +22,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -38,12 +40,15 @@ public class SciRadioPanel extends JPanel implements ActionListener {
     private JTextPane question;
     private Font font;
     private SciRadioButton[] choices;
-    private SciButton nextButton;
+    private JPanel cardPanel;
+    private CardLayout cardLayout;
     private int answer;
     private int correct;
+    private SciButton nextButton;
+    private ButtonGroup buttonGroup;
     private int selected;
     
-    public SciRadioPanel(String question, Font font, String[] choices, SciButton nextButton, int answer, int correct) {
+    public SciRadioPanel(String question, Font font, String[] choices, JPanel cardPanel, CardLayout cardLayout, int answer, int correct) {
         this.font = font;
         this.question = new JTextPane();
         SimpleAttributeSet attr = new SimpleAttributeSet();
@@ -56,11 +61,14 @@ public class SciRadioPanel extends JPanel implements ActionListener {
         this.question.setEditable(false);
         this.question.setOpaque(false);
         this.choices = new SciRadioButton[choices.length];
-        this.nextButton = nextButton;
-        this.nextButton.addActionListener(this);
+        this.cardPanel = cardPanel;
+        this.cardLayout = cardLayout;
         this.answer = answer;
         this.correct = correct;
-        ButtonGroup buttonGroup = new ButtonGroup();
+        nextButton = new SciButton(font);
+        nextButton.setAlignmentX(SciButton.CENTER_ALIGNMENT);
+        nextButton.addActionListener(this);
+        buttonGroup = new ButtonGroup();
         JPanel leftPanelY = new JPanel();
         leftPanelY.setOpaque(false);
         leftPanelY.setLayout(new BoxLayout(leftPanelY, BoxLayout.Y_AXIS));
@@ -95,6 +103,8 @@ public class SciRadioPanel extends JPanel implements ActionListener {
         add(this.question);
         add(Box.createVerticalStrut(15));
         add(containerPanel);
+        add(Box.createVerticalStrut(28));
+        add(nextButton);
     }
 
     @Override
@@ -108,6 +118,15 @@ public class SciRadioPanel extends JPanel implements ActionListener {
         if (e.getSource().equals(nextButton)) {
             if (selected == answer) {
                 correct++;
+                cardLayout.next(cardPanel);
+            }
+            
+            else if (buttonGroup.getSelection() == null) {
+                JOptionPane.showMessageDialog(question, "Item unanswered!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            else {
+                cardLayout.next(cardPanel);
             }
         }
     }

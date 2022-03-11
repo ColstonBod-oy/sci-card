@@ -49,13 +49,12 @@ public class SciCard {
         ImageIcon ico = new ImageIcon(dimg);
         emblem.setIcon(ico);
         
-        SciButton nextButton = new SciButton(font);
-        
+        CardLayout cardLayout = new CardLayout();
         JPanel cardPanel = new JPanel();
         cardPanel.setOpaque(false);
-        cardPanel.setLayout(new CardLayout());
-        //cardPanel.add(new SciRadioPanel("test question", font, choices[0], nextButton, 1, correct));
-        cardPanel.add(new SciCheckPanel("test question", font, choices[1], nextButton, new int[]{0, 1, -1, -1}, correct));
+        cardPanel.setLayout(cardLayout);
+        cardPanel.add(new SciRadioPanel("test question", font, choices[0], cardPanel, cardLayout, 1, correct));
+        cardPanel.add(new SciCheckPanel("test question2", font, choices[1], cardPanel, cardLayout, new int[]{0, 1, -1, -1}, correct));
         
         JPanel mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(480, 480));
@@ -65,8 +64,6 @@ public class SciCard {
                 GridBagConstraints.NONE, new Insets(0, 0, 28, 0), 0, 0));
         mainPanel.add(cardPanel, new GridBagConstraints(0, 1, 3, 1, 0, 0, GridBagConstraints.CENTER, 
                 GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-        mainPanel.add(nextButton, new GridBagConstraints(0, 2, 3, 1, 0, 0, GridBagConstraints.CENTER,
-                GridBagConstraints.NONE, new Insets(28, 0, 0, 0), 0, 0));
         
         JFrame mainFrame = new JFrame("Sci-Card");
         mainFrame.setResizable(false);
