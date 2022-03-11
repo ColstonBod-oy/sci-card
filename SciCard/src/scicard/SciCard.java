@@ -16,6 +16,7 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Arrays;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -53,9 +54,11 @@ public class SciCard {
         JPanel cardPanel = new JPanel();
         cardPanel.setOpaque(false);
         cardPanel.setLayout(cardLayout);
+        cardPanel.add(new SciLabelPanel("start\nsciquiz", font, cardPanel, cardLayout, score, false));
         cardPanel.add(new SciRadioPanel("test question", font, choices[0], cardPanel, cardLayout, 1, score));
         cardPanel.add(new SciCheckPanel("test question2", font, choices[1], cardPanel, cardLayout, new int[]{0, 1, -1, -1}, score));
         cardPanel.add(new SciTextPanel("test question3", font, "f____", cardPanel, cardLayout, "fuck", score));
+        cardPanel.add(new SciLabelPanel("end\nsciquiz", font, cardPanel, cardLayout, score, true));
         
         JPanel mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(480, 480));
