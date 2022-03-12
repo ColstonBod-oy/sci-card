@@ -16,13 +16,11 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Arrays;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 
 /**
  *
@@ -36,8 +34,9 @@ public class SciCard {
     public static void main(String[] args) throws FontFormatException, IOException {
         int[] score = {0};
         String[][] choices = {
-            {"opt1", "opt2", "opt3", "opt4"},
-            {"opt5", "opt6", "opt7", "opt8"}
+            {"andromeda", "milky way", "virgo a", "centaurus a"},
+            {"dark matter", "dark energy", "giant star", "black hole"},
+            {"Jupiter", "Pluto", "Saturn", "Eris"}
         };
         
         Font font = Font.createFont(Font.TRUETYPE_FONT, SciCard.class.getResourceAsStream("/scicard/assets/cyberspace.ttf")).deriveFont(10f);
@@ -55,9 +54,10 @@ public class SciCard {
         cardPanel.setOpaque(false);
         cardPanel.setLayout(cardLayout);
         cardPanel.add(new SciLabelPanel("start\nsciquiz", font, cardPanel, cardLayout, score, false));
-        cardPanel.add(new SciRadioPanel("test question", font, choices[0], cardPanel, cardLayout, 1, score));
-        cardPanel.add(new SciCheckPanel("test question2", font, choices[1], cardPanel, cardLayout, new int[]{0, 1, -1, -1}, score));
-        cardPanel.add(new SciTextPanel("test question3", font, "f____", cardPanel, cardLayout, "fuck", score));
+        cardPanel.add(new SciRadioPanel("name of our\nhome galaxy", font, choices[0], cardPanel, cardLayout, 1, score));
+        cardPanel.add(new SciRadioPanel("the center of\nour home galaxy", font, choices[1], cardPanel, cardLayout, 3, score));
+        cardPanel.add(new SciCheckPanel("planets from our\nsolar system", font, choices[2], cardPanel, cardLayout, new int[]{0, -1, 2, -1}, score));
+        cardPanel.add(new SciTextPanel("the most abundant\nelement on our planet", font, "o____n", cardPanel, cardLayout, "oxygen", score));
         cardPanel.add(new SciLabelPanel("end\nsciquiz", font, cardPanel, cardLayout, score, true));
         
         JPanel mainPanel = new JPanel();

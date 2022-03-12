@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,10 +25,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Arrays;
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -83,9 +79,9 @@ public class SciTextPanel extends JPanel implements ActionListener {
         add(this.question, new GridBagConstraints(0, 0, 3, 1, 0, 0, GridBagConstraints.CENTER, 
                 GridBagConstraints.NONE, new Insets(0, 0, 5, 0), 0, 0));
         add(textField, new GridBagConstraints(0, 1, 3, 1, 0, 0, GridBagConstraints.CENTER, 
-                GridBagConstraints.NONE, new Insets(15, 0, 15, 0), 0, 0));
+                GridBagConstraints.NONE, new Insets(26, 0, 16, 0), 0, 0));
         add(nextButton, new GridBagConstraints(0, 2, 3, 1, 0, 0, GridBagConstraints.CENTER, 
-                GridBagConstraints.NONE, new Insets(20, 0, 0, 0), 51, 0));
+                GridBagConstraints.NONE, new Insets(20, 120, 0, 120), 51, 0));
     }
 
     @Override

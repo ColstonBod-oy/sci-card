@@ -6,21 +6,21 @@ package scicard;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -63,7 +63,6 @@ public class SciCheckPanel extends JPanel implements ActionListener {
         this.score = score;
         this.selected = new int[choices.length];
         nextButton = new SciButton(font);
-        nextButton.setAlignmentX(SciButton.CENTER_ALIGNMENT);
         nextButton.addActionListener(this);
         isAnswered = false;
         JPanel leftPanelY = new JPanel();
@@ -76,7 +75,7 @@ public class SciCheckPanel extends JPanel implements ActionListener {
         containerPanel.setOpaque(false);
         containerPanel.setLayout(new FlowLayout());
         containerPanel.add(leftPanelY);
-        containerPanel.add(Box.createHorizontalStrut(55));
+        containerPanel.add(Box.createHorizontalStrut(15));
         containerPanel.add(rightPanelY);
         
         for (int i = 0; i < choices.length; i++) {
@@ -95,12 +94,13 @@ public class SciCheckPanel extends JPanel implements ActionListener {
         }
         
         setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(this.question);
-        add(Box.createVerticalStrut(15));
-        add(containerPanel);
-        add(Box.createVerticalStrut(28));
-        add(nextButton);
+        setLayout(new GridBagLayout());
+        add(this.question, new GridBagConstraints(0, 0, 3, 1, 0, 0, GridBagConstraints.CENTER, 
+                GridBagConstraints.NONE, new Insets(0, 0, 5, 0), 0, 0));
+        add(containerPanel, new GridBagConstraints(0, 1, 3, 1, 0, 0, GridBagConstraints.CENTER, 
+                GridBagConstraints.NONE, new Insets(17, 0, 13, 0), 0, 0));
+        add(nextButton, new GridBagConstraints(0, 2, 3, 1, 0, 0, GridBagConstraints.CENTER, 
+                GridBagConstraints.NONE, new Insets(20, 120, 0, 120), 51, 0));
     }
 
     @Override

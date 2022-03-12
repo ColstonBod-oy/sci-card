@@ -13,9 +13,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -51,14 +48,13 @@ public class SciLabelPanel extends JPanel implements ActionListener {
         this.score = score;
         this.isLastCard = isLastCard;
         nextButton = new SciButton(font);
-        nextButton.setAlignmentX(SciButton.CENTER_ALIGNMENT);
         nextButton.addActionListener(this);
         setOpaque(false);
         setLayout(new GridBagLayout());
         add(this.text, new GridBagConstraints(0, 0, 3, 1, 0, 0, GridBagConstraints.CENTER, 
-                GridBagConstraints.NONE, new Insets(16, 0, 0, 0), 0, 0));
+                GridBagConstraints.NONE, new Insets(29, 0, 0, 0), 0, 0));
         add(nextButton, new GridBagConstraints(0, 1, 3, 1, 0, 0, GridBagConstraints.CENTER, 
-                GridBagConstraints.NONE, new Insets(42, 0, 0, 0), 51, 0));
+                GridBagConstraints.NONE, new Insets(58, 120, 0, 120), 51, 0));
     }
 
     @Override
