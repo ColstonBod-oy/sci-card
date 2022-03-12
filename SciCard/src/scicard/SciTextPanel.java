@@ -70,6 +70,7 @@ public class SciTextPanel extends JPanel implements ActionListener {
         this.font = font;
         this.hintText = hintText;
         this.textField = new SciTextField(hintText);
+        this.textField.setPreferredSize(new Dimension(210, 60));
         this.cardPanel = cardPanel;
         this.cardLayout = cardLayout;
         this.answer = answer.toLowerCase();
@@ -82,7 +83,7 @@ public class SciTextPanel extends JPanel implements ActionListener {
         add(this.question, new GridBagConstraints(0, 0, 3, 1, 0, 0, GridBagConstraints.CENTER, 
                 GridBagConstraints.NONE, new Insets(0, 0, 5, 0), 0, 0));
         add(textField, new GridBagConstraints(0, 1, 3, 1, 0, 0, GridBagConstraints.CENTER, 
-                GridBagConstraints.NONE, new Insets(15, 0, 15, 0), 150, 20));
+                GridBagConstraints.NONE, new Insets(15, 0, 15, 0), 0, 0));
         add(nextButton, new GridBagConstraints(0, 2, 3, 1, 0, 0, GridBagConstraints.CENTER, 
                 GridBagConstraints.NONE, new Insets(20, 0, 0, 0), 51, 0));
     }
