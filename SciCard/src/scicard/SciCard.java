@@ -36,7 +36,12 @@ public class SciCard {
         String[][] choices = {
             {"andromeda", "milky way", "virgo a", "centaurus a"},
             {"dark matter", "dark energy", "giant star", "black hole"},
-            {"Jupiter", "Pluto", "Saturn", "Eris"}
+            {"jupiter", "pluto", "saturn", "eris"},
+            {"argon", "nitrogen", "oxygen", "phosphorus"},
+            {"oxygen", "silicon", "hydrogen", "phosphorus"},
+            {"neanderthals", "erectus", "denisovans", "sapiens"},
+            {"brain", "spinal cord", "axons", "dendrites"},
+            {"psychology", "mathematics", "science", "astronomy"}
         };
         
         Font font = Font.createFont(Font.TRUETYPE_FONT, SciCard.class.getResourceAsStream("/scicard/assets/cyberspace.ttf")).deriveFont(10f);
@@ -57,7 +62,14 @@ public class SciCard {
         cardPanel.add(new SciRadioPanel("name of our\nhome galaxy", font, choices[0], cardPanel, cardLayout, 1, score));
         cardPanel.add(new SciRadioPanel("the center of\nour home galaxy", font, choices[1], cardPanel, cardLayout, 3, score));
         cardPanel.add(new SciCheckPanel("planets from our\nsolar system", font, choices[2], cardPanel, cardLayout, new int[]{0, -1, 2, -1}, score));
+        cardPanel.add(new SciCheckPanel("main components\nof our atmosphere", font, choices[3], cardPanel, cardLayout, new int[]{0, 1, 2, -1}, score));
         cardPanel.add(new SciTextPanel("the most abundant\nelement on our planet", font, "o____n", cardPanel, cardLayout, "oxygen", score));
+        cardPanel.add(new SciTextPanel("primary component of\nlife forms on our planet", font, "c____n", cardPanel, cardLayout, "carbon", score));
+        cardPanel.add(new SciCheckPanel("elements that can\nbe found in our body", font, choices[4], cardPanel, cardLayout, new int[]{0, -1, 2, 3}, score));
+        cardPanel.add(new SciRadioPanel("group of hominids where\nour ancestry belong", font, choices[5], cardPanel, cardLayout, 3, score));
+        cardPanel.add(new SciTextPanel("group of vertebrates\nwe are classified into", font, "m_____s", cardPanel, cardLayout, "mammals", score));
+        cardPanel.add(new SciCheckPanel("parts of our\nnervous system", font, choices[6], cardPanel, cardLayout, new int[]{0, 1, 2, 3}, score));
+        cardPanel.add(new SciRadioPanel("our tool to understand the\nphysical and natural world", font, choices[7], cardPanel, cardLayout, 2, score));
         cardPanel.add(new SciLabelPanel("end\nsciquiz", font, cardPanel, cardLayout, score, true));
         
         JPanel mainPanel = new JPanel();
