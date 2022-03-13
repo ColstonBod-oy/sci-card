@@ -104,8 +104,8 @@ Adds vertical spacing and separates the radio buttons into 2 sides which would t
 ![Screenshot_17](https://user-images.githubusercontent.com/75562733/158073243-f462e4e1-d3eb-4727-b9dc-a31a9b51322c.png)
 ![Screenshot_18](https://user-images.githubusercontent.com/75562733/158073246-46d4e79e-7b1c-4399-a4f0-3be0b420ddff.png)
 ![Screenshot_19](https://user-images.githubusercontent.com/75562733/158073250-4fee105a-ad84-46ef-9a19-ebdbdd6f9cf7.png)
-![Screenshot_20](https://user-images.githubusercontent.com/75562733/158073604-5a9426b3-0d59-4bf3-a111-650f8c396cd8.png)
-![Screenshot_21](https://user-images.githubusercontent.com/75562733/158073615-8be3b7de-61f5-41ef-a9ac-cd006e5c741e.png)
+![Screenshot_20](https://user-images.githubusercontent.com/75562733/158073766-e6c1b4db-cd43-4227-a810-b15d3bca24c9.png)
+![Screenshot_21](https://user-images.githubusercontent.com/75562733/158073772-6f35da20-9fe8-421b-8978-7b5393f3f42d.png)
 
 * Extends the JPanel class and implements ActionListener.
 * Instantiates custom JTextFields along with their own next button.
