@@ -100,13 +100,12 @@ Adds vertical spacing and separates the radio buttons into 2 sides which would t
 
 ### SciTextPanel.java
 
-![Screenshot_16](https://user-images.githubusercontent.com/75562733/158070602-a4be2325-bed6-4eb9-a817-38ea31740970.png)
-![Screenshot_17](https://user-images.githubusercontent.com/75562733/158070608-0fac9ec2-7d24-470b-93dd-f8f3dffdef8e.png)
-![Screenshot_18](https://user-images.githubusercontent.com/75562733/158070617-0a3af48f-cd1d-44d5-8610-a3215e92a1f5.png)
-![Screenshot_19](https://user-images.githubusercontent.com/75562733/158070621-106265cf-892b-4cbe-9805-ccd88d13ae35.png)
-![Screenshot_20](https://user-images.githubusercontent.com/75562733/158070625-9129eb87-dac4-4270-b8c7-14d6ef21add9.png)
-![Screenshot_21](https://user-images.githubusercontent.com/75562733/158070629-dff9612b-abf0-44fa-bdd0-0547cc6c9dbc.png)
-![Screenshot_22](https://user-images.githubusercontent.com/75562733/158070635-2f3c5ed6-1b48-4e93-b3b2-75ab8e7756c5.png)
+![Screenshot_16](https://user-images.githubusercontent.com/75562733/158073236-c1b66702-3d9f-44f6-96c0-718c38e4dccb.png)
+![Screenshot_17](https://user-images.githubusercontent.com/75562733/158073243-f462e4e1-d3eb-4727-b9dc-a31a9b51322c.png)
+![Screenshot_18](https://user-images.githubusercontent.com/75562733/158073246-46d4e79e-7b1c-4399-a4f0-3be0b420ddff.png)
+![Screenshot_19](https://user-images.githubusercontent.com/75562733/158073250-4fee105a-ad84-46ef-9a19-ebdbdd6f9cf7.png)
+![Screenshot_20](https://user-images.githubusercontent.com/75562733/158073254-35a8111e-677e-4b2f-94a8-09a19eb4b6a7.png)
+![Screenshot_21](https://user-images.githubusercontent.com/75562733/158073258-10b41931-f30a-49d6-a3e9-88d70a591ca2.png)
 
 * Extends the JPanel class and implements ActionListener.
 * Instantiates custom JTextFields along with their own next button.
