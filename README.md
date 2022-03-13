@@ -85,11 +85,11 @@ Adds vertical spacing and separates the radio buttons into 2 sides which would t
 
 ### SciCheckPanel.java
 
-![Screenshot_11](https://user-images.githubusercontent.com/75562733/158072595-43d0035d-4700-4834-967a-ff363ceb8019.png)
-![Screenshot_12](https://user-images.githubusercontent.com/75562733/158072599-1ee20bb6-efea-4575-97ef-a2c6c47db506.png)
-![Screenshot_13](https://user-images.githubusercontent.com/75562733/158072603-ca8d37cb-3466-4864-80e9-246886b63092.png)
-![Screenshot_14](https://user-images.githubusercontent.com/75562733/158072606-41e432cd-26e9-491b-bc95-043cee68d5f9.png)
-![Screenshot_15](https://user-images.githubusercontent.com/75562733/158072609-b856678d-3cff-4847-9867-187f0de03af9.png)
+![Screenshot_11](https://user-images.githubusercontent.com/75562733/158072867-69403646-441f-44f7-adf3-0a34baf91dc8.png)
+![Screenshot_12](https://user-images.githubusercontent.com/75562733/158072872-60b1ad2a-578c-46d0-a530-6fd1b5c67942.png)
+![Screenshot_13](https://user-images.githubusercontent.com/75562733/158072876-6c4649f6-771d-4ceb-98e2-85014d35990e.png)
+![Screenshot_14](https://user-images.githubusercontent.com/75562733/158072882-2711dc29-4f37-4117-bb0c-3232ecc7edad.png)
+![Screenshot_15](https://user-images.githubusercontent.com/75562733/158072885-290fbbd9-5033-49c9-82ea-204f053565b9.png)
 
 * Extends the JPanel class and implements ActionListener.
 * Instantiates custom JCheckBoxes along with their own next button.
